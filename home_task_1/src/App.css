@@ -5,3 +5,39 @@
   text-align: center;
 }
 
+.title {
+  color: blue;
+}
+
+.counter {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.content-btn {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  width: 400px;
+}
+
+.btn-increment {
+  background-color: green;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 25px;
+  font-size: 16px;
+}
+
+.btn-decrement {
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 25px;
+  font-size: 16px;
+}
