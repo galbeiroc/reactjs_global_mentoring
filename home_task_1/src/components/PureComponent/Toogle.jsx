@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
+import './Toogle.scss';
 
-class PureComponentToggle extends PureComponent {
+export class PureComponentToggle extends PureComponent {
   constructor() {
     super()
     this.state = {
@@ -16,7 +17,7 @@ class PureComponentToggle extends PureComponent {
     return (
       <div className="content-toggle">
         <h2 className="title">Toogle</h2>
-        <label for="genre">Genre: </label>
+        <label htmlFor="genre">Genre: </label>
         <select className="genre" onChange={this.onSelect}>
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -26,5 +27,3 @@ class PureComponentToggle extends PureComponent {
     )
   }
 }
-
-export default PureComponentToggle;

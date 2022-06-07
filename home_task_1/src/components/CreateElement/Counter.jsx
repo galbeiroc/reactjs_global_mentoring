@@ -1,6 +1,7 @@
 import { Component, createElement} from 'react';
+import './Counter.scss';
 
-class CreateElementCounter extends Component {
+export class CreateElementCounter extends Component {
   constructor() {
     super()
 
@@ -48,5 +49,3 @@ class CreateElementCounter extends Component {
     )
   }
 }
-
-export default CreateElementCounter;

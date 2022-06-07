@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { companies } from '../../data/companies';
+import './Search.scss';
 
-function FunctionalSearch() {
+export const FunctionalSearch = () => {
   const [query, setQuery] = useState("");
+  const [filteredCompanies, setFilteredAllCompanies] = useState([]);
 
-  const onChange = (e) => {
+  useEffect(() => {
+    setFilteredAllCompanies(
+      companies.filter((company) => company.title.toLowerCase().includes(query.toLowerCase()))
+    )
+  }, [query])
+
+  const onChange = useCallback((e) => {
     setQuery(e.target.value)
-  }
+  }, [])
 
   return (
     <div className='content-search'>
@@ -18,15 +26,7 @@ function FunctionalSearch() {
           value={query}
         />
         {
-          companies.filter((company) => {
-            if (query === '') {
-              return company
-            } else if (company.title.toLowerCase().includes(query.toLowerCase())) {
-              return company
-            } else {
-              return null
-            }
-          }).map((company, index) => (
+          filteredCompanies.map((company, index) => (
             <div className="box" key={index}>
               <p className='title-company'>{company.title}</p>
               <p>{company.description}</p>
@@ -37,5 +37,3 @@ function FunctionalSearch() {
     </div>
   )
 }
-
-export default FunctionalSearch;
