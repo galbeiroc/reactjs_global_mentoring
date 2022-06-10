@@ -3,6 +3,8 @@ import React from 'react';
 import laugh from '../assets/laughing.svg'
 
 function App() {
+  console.log(process.env.API);
+
   return (
     <div>
       <h3 className='title'>Webpack App</h3>
