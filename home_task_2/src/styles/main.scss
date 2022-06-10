@@ -2,6 +2,7 @@
 
 $primary-color: #abeafd;
 $secondary-color: #f4f4f4;
+$text-color: #151313;
 $box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
 
 body {
@@ -21,4 +22,25 @@ body {
 .title {
   color: $secondary-color;
   font-weight: bold;
+}
+
+.paragraph {
+  color: $text-color;
+  text-align: justify;
+}
+
+.container-img {
+  background-color: $secondary-color;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+  padding: 50px 20px;
+  text-align: center;
+  max-width: 100%;
+  width: 800px;
+}
+
+.laugh {
+  width: 250px;
+  height: 250px;
+  margin-top: 10px;
 }
