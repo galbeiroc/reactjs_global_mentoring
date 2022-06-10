@@ -2,7 +2,9 @@ import React from 'react';
 
 function App() {
   return (
-    <div>Webpack App</div>
+    <div>
+      <h3 className='title'>Webpack App</h3>
+    </div>
   )
 }
 
