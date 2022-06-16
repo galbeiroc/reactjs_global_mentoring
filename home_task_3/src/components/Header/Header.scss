@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+header {
+  background-image: url('../../assets/header-img.jpeg');
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 396px;
+  width: 1200px;
+}
+
+.layer {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+.btn-add {
+  color: $secondary-color !important;
+  background-color: $grey3-color !important;
+  font-size: 20px;
+  text-transform: uppercase;
+  width: 177px;
+}
+
+.title {
+  color: $white-color;
+  font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  margin: 15px 0 45px 115px;
+  text-transform: uppercase;
+}
