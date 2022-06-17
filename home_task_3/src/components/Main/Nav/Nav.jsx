@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Box, Tab } from '@mui/material';
+import { Box, Tab, Typography } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-import './Nav.scss'
+import { Sort } from '../Sort/Sort';
+
+import './Nav.scss';
 
 export const Nav = () => {
   const [value, setValue] = useState('1');
@@ -18,15 +20,13 @@ export const Nav = () => {
       <TabContext value={value}>
         <Box className='box-tabs'>
           <TabList className='tab-list' value={value} onChange={handleChange}>
-            <Tab label="ALL" value="1"/>
-            <Tab label="DOCUMENTARY" value="2" />
-            <Tab label="COMEDY" value="3" />
-            <Tab label="HORROR" value="4" />
-            <Tab label="CRIME" value="5" />
+            <Tab label={<Typography className='text-tab' variant='subtitle1'>ALL</Typography>} value="1"/>
+            <Tab label={<Typography className='text-tab' variant='subtitle1'>DOCUMENTARY</Typography>} value="2" />
+            <Tab label={<Typography className='text-tab' variant='subtitle1'>COMEDY</Typography>} value="3" />
+            <Tab label={<Typography className='text-tab' variant='subtitle1'>HORROR</Typography>} value="4" />
+            <Tab label={<Typography className='text-tab' variant='subtitle1'>CRIME</Typography>} value="5" />
           </TabList>
-          <Box className='sort'>
-            <span>SORT BY</span>
-          </Box>
+          <Sort />
         </Box>
         <TabPanel value="1">All</TabPanel>
         <TabPanel value="2">DOCUMENTARY</TabPanel>

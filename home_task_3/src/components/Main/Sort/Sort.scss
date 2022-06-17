@@ -1,0 +1,25 @@
+@import "../../../styles/variables.scss";
+
+.sort-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.sort-text {
+  color: rgba($white-color, 0.68);
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+}
+
+.sort-select {
+  background-color: transparent !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.MuiSvgIcon-root {
+  color: $secondary-color !important;
+}
