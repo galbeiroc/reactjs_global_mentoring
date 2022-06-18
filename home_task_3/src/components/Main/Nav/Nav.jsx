@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Box, Tab, Typography } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
 
 import { Sort } from '../Sort/Sort';
 
@@ -28,11 +27,6 @@ export const Nav = () => {
           </TabList>
           <Sort />
         </Box>
-        <TabPanel value="1">All</TabPanel>
-        <TabPanel value="2">DOCUMENTARY</TabPanel>
-        <TabPanel value="3">COMEDY</TabPanel>
-        <TabPanel value="4">HORROR</TabPanel>
-        <TabPanel value="5">CRIME</TabPanel>
       </TabContext>
     </nav>
   )
