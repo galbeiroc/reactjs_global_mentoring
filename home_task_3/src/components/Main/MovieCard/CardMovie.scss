@@ -1,5 +1,9 @@
 @import "../../../styles/variables.scss";
 
+.MuiPaper-root {
+  background-color: $dark !important;
+}
+
 .MuiCardContent-root {
   background-color: $dark;
   padding: 10px !important;
