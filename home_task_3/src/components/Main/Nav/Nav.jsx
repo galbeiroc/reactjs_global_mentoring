@@ -1,24 +1,18 @@
-import { useState } from 'react';
 import { Box, Tab, Typography } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
+import PropTypes from 'prop-types';
 
 import { Sort } from '../Sort/Sort';
 
 import './Nav.scss';
 
-export const Nav = () => {
-  const [value, setValue] = useState('1');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+export const Nav = ({ tabValue, handleChange }) => {
   return (
-    <nav>
-      <TabContext value={value}>
+    <nav className='content-nav'>
+      <TabContext value={tabValue}>
         <Box className='box-tabs'>
-          <TabList className='tab-list' value={value} onChange={handleChange}>
+          <TabList className='tab-list' value={tabValue} onChange={handleChange}>
             <Tab label={<Typography className='text-tab' variant='subtitle1'>ALL</Typography>} value="1"/>
             <Tab label={<Typography className='text-tab' variant='subtitle1'>DOCUMENTARY</Typography>} value="2" />
             <Tab label={<Typography className='text-tab' variant='subtitle1'>COMEDY</Typography>} value="3" />
@@ -30,4 +24,9 @@ export const Nav = () => {
       </TabContext>
     </nav>
   )
+}
+
+Nav.protoTypes = {
+  tabValue: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired
 }

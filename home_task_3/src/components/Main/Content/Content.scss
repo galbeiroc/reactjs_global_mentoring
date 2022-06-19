@@ -1,0 +1,8 @@
+@import "../../../styles/variables.scss";
+
+.MuiTabPanel-root {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 50px;
+  padding: 24px 60px !important;
+}

@@ -1,14 +1,20 @@
-import React from 'react'
-import { Nav } from './Nav/Nav'
+import { useState } from 'react';
+import { Nav } from './Nav/Nav';
 
-import './Main.scss'
-import { Content } from './Content/Content'
+import './Main.scss';
+import { Content } from './Content/Content';
 
 export const Main = () => {
+  const [tabValue, setTabValue] = useState('1');
+
+  const handleChange = (event, newTabValue) => {
+    setTabValue(newTabValue);
+  };
+
   return (
     <main>
-      <Nav />
-      <Content value={'1'} />
+      <Nav tabValue={tabValue} handleChange={handleChange} />
+      <Content tabValue={tabValue} />
     </main>
   )
 }
