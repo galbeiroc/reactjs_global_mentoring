@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import { Component } from 'react';
+import { Alert } from '@mui/material';
 
 export default class ErrorBoundary extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <h4>Something went wrong</h4>
+      return <Alert severity="error">Something went wrong!</Alert>
     }
 
     return this.props.children;
