@@ -1,5 +1,15 @@
 @import "../../../styles/variables.scss";
 
+.movies-found {
+  color: $white-color;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 24px;
+  margin-left: 60px !important;
+  padding-top: 20px;
+}
+
 .MuiTabPanel-root {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;

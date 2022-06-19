@@ -6,6 +6,7 @@ import { Categories } from './Categories/Categories';
 
 import allMovies from '../../../data/data.json';
 import './Content.scss'
+import { Typography } from '@mui/material';
 
 export const Content = ({ tabValue }) => {
   const [movies, setMovies] = useState([]);
@@ -36,6 +37,9 @@ export const Content = ({ tabValue }) => {
 
   return (
     <TabContext value={tabValue}>
+      <Typography className='movies-found' variant='caption'>
+        <b>{movies.length}</b> movies found
+      </Typography>
       <TabPanel value={tabValue}>
         <Categories tabValue={tabValue} movies={movies} />
       </TabPanel>
