@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Nav } from './Nav/Nav';
 
 import './Main.scss';
@@ -7,9 +7,9 @@ import { Content } from './Content/Content';
 export const Main = () => {
   const [tabValue, setTabValue] = useState('1');
 
-  const handleChange = (event, newTabValue) => {
+  const handleChange = useCallback((event, newTabValue) => {
     setTabValue(newTabValue);
-  };
+  }, []);
 
   return (
     <main>

@@ -7,24 +7,22 @@ import { Sort } from '../Sort/Sort';
 
 import './Nav.scss';
 
-export const Nav = ({ tabValue, handleChange }) => {
-  return (
-    <nav className='content-nav'>
-      <TabContext value={tabValue}>
-        <Box className='box-tabs'>
-          <TabList className='tab-list' value={tabValue} onChange={handleChange}>
-            <Tab label={<Typography className='text-tab' variant='subtitle1'>ALL</Typography>} value="1"/>
-            <Tab label={<Typography className='text-tab' variant='subtitle1'>DOCUMENTARY</Typography>} value="2" />
-            <Tab label={<Typography className='text-tab' variant='subtitle1'>COMEDY</Typography>} value="3" />
-            <Tab label={<Typography className='text-tab' variant='subtitle1'>HORROR</Typography>} value="4" />
-            <Tab label={<Typography className='text-tab' variant='subtitle1'>CRIME</Typography>} value="5" />
-          </TabList>
-          <Sort />
-        </Box>
-      </TabContext>
-    </nav>
-  )
-}
+export const Nav = ({ tabValue, handleChange }) => (
+  <nav className='content-nav'>
+    <TabContext value={tabValue}>
+      <Box className='box-tabs'>
+        <TabList className='tab-list' value={tabValue} onChange={handleChange}>
+          <Tab label={<Typography className='text-tab' variant='subtitle1'>ALL</Typography>} value="1"/>
+          <Tab label={<Typography className='text-tab' variant='subtitle1'>FANTASY</Typography>} value="2" />
+          <Tab label={<Typography className='text-tab' variant='subtitle1'>COMEDY</Typography>} value="3" />
+          <Tab label={<Typography className='text-tab' variant='subtitle1'>HORROR</Typography>} value="4" />
+          <Tab label={<Typography className='text-tab' variant='subtitle1'>ACTION</Typography>} value="5" />
+        </TabList>
+        <Sort />
+      </Box>
+    </TabContext>
+  </nav>
+);
 
 Nav.protoTypes = {
   tabValue: PropTypes.string.isRequired,
