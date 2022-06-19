@@ -14,10 +14,10 @@ export const Content = ({ tabValue }) => {
   const showMoviesCategories = useCallback((tabVal) => {
     switch (tabVal) {
       case '2':
-          setMovies(allMovies.filter((movie) => movie.genres.includes('Fantasy')))
+        setMovies(allMovies.filter((movie) => movie.genres.includes('Fantasy')))
         break;
       case '3':
-          setMovies(allMovies.filter((movie) => movie.genres.includes('Comedy')))
+        setMovies(allMovies.filter((movie) => movie.genres.includes('Comedy')))
         break;
       case '4':
         setMovies(allMovies.filter((movie) => movie.genres.includes('Horror')))
