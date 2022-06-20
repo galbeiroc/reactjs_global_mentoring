@@ -24,7 +24,7 @@ export const Nav = ({ tabValue, handleChange }) => (
   </nav>
 );
 
-Nav.protoTypes = {
+Nav.propTypes = {
   tabValue: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired
 }

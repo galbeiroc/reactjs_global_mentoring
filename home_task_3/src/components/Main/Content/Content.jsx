@@ -47,6 +47,6 @@ export const Content = ({ tabValue }) => {
   )
 }
 
-Content.protoTypes = {
+Content.propTypes = {
   tabValue: PropTypes.string.isRequired
 }

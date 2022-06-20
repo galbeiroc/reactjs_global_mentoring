@@ -12,7 +12,7 @@ export const Categories = ({ movies }) => (
   </>
 );
 
-Categories.protoTypes = {
+Categories.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,

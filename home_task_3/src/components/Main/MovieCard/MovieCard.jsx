@@ -32,7 +32,7 @@ export const MovieCard = ({ genres, title, poster_path, release_date }) => {
   )
 }
 
-MovieCard.protoTypes = {
+MovieCard.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string.isRequired,
   tagline: PropTypes.string,
