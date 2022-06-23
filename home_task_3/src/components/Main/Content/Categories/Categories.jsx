@@ -15,8 +15,9 @@ export const Categories = ({ movies }) => (
 Categories.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       title: PropTypes.string.isRequired,
+      release_date: PropTypes.string,
       tagline: PropTypes.string,
       vote_average: PropTypes.number,
       vote_count: PropTypes.number,

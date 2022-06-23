@@ -16,18 +16,10 @@ header {
   height: 100%;
 }
 
-.top-header {
+.topHeader {
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
-}
-
-.btn-add {
-  color: $secondary-color !important;
-  background-color: $grey3-color !important;
-  font-size: 20px;
-  text-transform: uppercase;
-  width: 177px;
 }
 
 .title {

@@ -1,23 +1,56 @@
 import { Box, Tab, Typography } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
+import Tabs from '@mui/material/Tabs';
 import PropTypes from 'prop-types';
 
 import { Sort } from '../Sort/Sort';
 
 import './Nav.scss';
 
+const tabs = {
+  1: "ALL",
+  2: "FANTASY",
+  3: "COMEDY",
+  4: "HORROR",
+  5: "ACTION"
+}
+
 export const Nav = ({ tabValue, handleChange }) => (
-  <nav className='content-nav'>
+  <nav className='contentNav'>
     <TabContext value={tabValue}>
-      <Box className='box-tabs'>
-        <TabList className='tab-list' value={tabValue} onChange={handleChange}>
-          <Tab label={<Typography className='text-tab' variant='subtitle1'>ALL</Typography>} value="1"/>
-          <Tab label={<Typography className='text-tab' variant='subtitle1'>FANTASY</Typography>} value="2" />
-          <Tab label={<Typography className='text-tab' variant='subtitle1'>COMEDY</Typography>} value="3" />
-          <Tab label={<Typography className='text-tab' variant='subtitle1'>HORROR</Typography>} value="4" />
-          <Tab label={<Typography className='text-tab' variant='subtitle1'>ACTION</Typography>} value="5" />
-        </TabList>
+      <Box className='boxTabs'>
+        <Tabs
+          className='tabList'
+          value={tabValue}
+          onChange={handleChange}
+          sx={{
+            '.MuiTabs-indicator': {
+              backgroundColor: '#F65242'
+            },
+          }}
+        >
+          {
+            Object.entries(tabs).map(([key, value], i) => (
+              <Tab
+                key={`${value}-${i}`}
+                label={
+                  <Typography
+                    style={{
+                      color: tabValue === key ? '#F65242' : 'white',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '16px',
+                      fontWeight: 500,
+                    }}
+                    variant='subtitle1'
+                  >
+                    {value}
+                  </Typography>
+                }
+                value={key}
+              />
+            ))
+          }
+        </Tabs>
         <Sort />
       </Box>
     </TabContext>

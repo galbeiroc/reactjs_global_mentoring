@@ -11,16 +11,29 @@ export const Sort = () => {
   }
 
   return (
-    <Box className='sort-content'>
-      <Typography className='sort-text' variant='subtitle1'>
+    <Box className='sortContent'>
+      <Typography
+        variant='subtitle1'
+        sx={{
+          color: 'rgba(255, 255, 255, 0.68)',
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: '16px',
+        }}
+      >
         SORT BY
       </Typography>
       <Select
-        className='sort-select'
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
         value={sortBy}
         size='small'
+        sx={{
+          backgroundColor: 'transparent',
+          color: 'white',
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: '16px',
+          fontWeight: 500,
+          textTransform: 'uppercase',
+          width: 'fit-content'
+        }}
         onChange={onChange}
       >
         <MenuItem value={10}>release date</MenuItem>
