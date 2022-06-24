@@ -1,0 +1,19 @@
+@import "../../../styles/variables.scss";
+
+.sortContent {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.sortSelect {
+  background-color: transparent !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.MuiSvgIcon-root {
+  color: $secondary-color !important;
+}

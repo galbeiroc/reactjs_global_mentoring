@@ -1,0 +1,8 @@
+@import "../../styles/variables.scss";
+
+main {
+  background-color: $dark;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
