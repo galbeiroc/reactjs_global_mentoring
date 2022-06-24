@@ -16,14 +16,14 @@ const tabs = {
   5: "ACTION"
 }
 
-export const Nav = ({ tabValue, handleChange }) => (
+export const Nav = ({ tabValue, handleTabs }) => (
   <nav className='contentNav'>
     <TabContext value={tabValue}>
       <Box className='boxTabs'>
         <Tabs
           className='tabList'
           value={tabValue}
-          onChange={handleChange}
+          onChange={handleTabs}
           sx={{
             '.MuiTabs-indicator': {
               backgroundColor: '#F65242'
@@ -60,5 +60,5 @@ export const Nav = ({ tabValue, handleChange }) => (
 
 Nav.propTypes = {
   tabValue: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleTabs: PropTypes.func.isRequired
 }

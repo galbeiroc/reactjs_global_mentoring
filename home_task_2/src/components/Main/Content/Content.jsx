@@ -4,11 +4,21 @@ import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 import { Categories } from './Categories/Categories';
+import { MovieForm } from '../../MovieForm/MovieForm';
 
 import { data } from '../../../data/data';
 
-export const Content = ({ tabValue }) => {
+export const Content = ({ handleClose, open, tabValue }) => {
   const [movies, setMovies] = useState([]);
+  const [movie, setMovie] = useState({
+    genres: [],
+    overview: '',
+    poster_path: '',
+    revenue: 0,
+    vote_count: 0.0,
+    title: '',
+  });
+  const [releaseDate, setReleaseDate] = useState(null);
 
   const showMoviesCategories = useCallback((tabVal) => {
     switch (tabVal) {
@@ -33,6 +43,22 @@ export const Content = ({ tabValue }) => {
   useEffect(() => {
     showMoviesCategories(tabValue)
   }, [tabValue, showMoviesCategories]);
+
+  const hadleChange = useCallback((event) => {
+    const {
+      target: { value, name },
+    } = event;
+    if (name === 'genres') {
+      setMovie({
+        ...movie, [name]: typeof value === 'string' ? value.split(',') : value,
+    });
+    } else {
+      setMovie({
+        ...movie, [name]: value
+      })
+    }
+    
+  }, [setMovie, movie]);
 
   return (
     <TabContext value={tabValue}>
@@ -61,10 +87,20 @@ export const Content = ({ tabValue }) => {
       >
         <Categories tabValue={tabValue} movies={movies} />
       </TabPanel>
+      <MovieForm
+        handleClose={handleClose}
+        handleChange={hadleChange}
+        movie={movie}
+        open={open}
+        releaseDate={releaseDate}
+        setReleaseDate={setReleaseDate}
+      />
     </TabContext>
   )
 }
 
 Content.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
   tabValue: PropTypes.string.isRequired
 }

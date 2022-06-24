@@ -2,11 +2,12 @@ import React from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
 import { Logo } from './Logo/Logo';
+import PropTypes from 'prop-types';
 
-import './Header.scss'
 import { Search } from './Search/Search';
+import './Header.scss';
 
-export const Header = () => {
+export const Header = ({ handleOpen }) => {
   return (
     <header>
       <div className="layer">
@@ -22,6 +23,7 @@ export const Header = () => {
               fontSize: '16px',
               width: '177px'
             }}
+            onClick={handleOpen}
           >
             <AddIcon />ADD MORE
           </Button>
@@ -34,3 +36,7 @@ export const Header = () => {
     </header>
   )
 }
+
+Header.propTypes = {
+  handleOpen: PropTypes.func.isRequired
+};
