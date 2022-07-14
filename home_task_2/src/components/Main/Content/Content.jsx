@@ -14,8 +14,8 @@ export const Content = ({ handleClose, open, tabValue }) => {
     genres: [],
     overview: '',
     poster_path: '',
-    revenue: 0,
-    vote_count: 0.0,
+    revenue: null,
+    vote_count: null,
     title: '',
   });
   const [releaseDate, setReleaseDate] = useState(null);
