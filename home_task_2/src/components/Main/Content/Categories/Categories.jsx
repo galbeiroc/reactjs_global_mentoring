@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { MovieCard } from '../../MovieCard/MovieCard';
 
-export const Categories = ({ movies, handleOpen }) => (
+export const Categories = ({ movies, handleOpen, setIsDeleted }) => (
   <>
     {
       movies.map((movie) => (
-        <MovieCard key={movie.id} {...movie} handleOpen={handleOpen} />
+        <MovieCard key={movie.id} {...movie} handleOpen={handleOpen} setIsDeleted={setIsDeleted} />
       ))
     }
   </>
@@ -30,5 +30,6 @@ Categories.propTypes = {
       runtime: PropTypes.number
     })
   ).isRequired,
-  handleOpen: PropTypes.func.isRequired
+  handleOpen: PropTypes.func.isRequired,
+  setIsDeleted: PropTypes.func
 };

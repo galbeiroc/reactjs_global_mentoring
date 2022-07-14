@@ -22,6 +22,7 @@ export default function App() {
   const [movie, setMovie] = useState(initialStateMovie);
   const [releaseDate, setReleaseDate] = useState(null);
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     if (movieId) {
@@ -57,7 +58,8 @@ export default function App() {
 
   const handleClose = () => {
     setOpen(false);
-    setIsSuccessful(false)
+    setIsDeleted(false);
+    setIsSuccessful(false);
     handleReset();
   };
 
@@ -76,11 +78,13 @@ export default function App() {
         handleReleaseDate={handleReleaseDate}
         handleReset={handleReset}
         handleSubmit={handleSubmit}
+        isDeleted={isDeleted}
+        isSuccessful={isSuccessful}
         movie={movie}
         open={open}
         releaseDate={releaseDate}
+        setIsDeleted={setIsDeleted}
         setMovie={setMovie}
-        isSuccessful={isSuccessful}
       />
       <Footer />
     </>

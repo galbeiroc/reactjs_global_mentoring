@@ -12,11 +12,13 @@ export const Main = ({
   handleReleaseDate,
   handleReset,
   handleSubmit,
+  isDeleted,
+  isSuccessful,
   movie,
   open,
   releaseDate,
-  setMovie,
-  isSuccessful
+  setIsDeleted,
+  setMovie
 }) => {
   const [tabValue, setTabValue] = useState('1');
 
@@ -33,11 +35,13 @@ export const Main = ({
         handleReleaseDate={handleReleaseDate}
         handleReset={handleReset}
         handleSubmit={handleSubmit}
+        isDeleted={isDeleted}
+        isSuccessful={isSuccessful}
         movie={movie}
         open={open}
         releaseDate={releaseDate}
+        setIsDeleted={setIsDeleted}
         setMovie={setMovie}
-        isSuccessful={isSuccessful}
         tabValue={tabValue}
       />
     </main>
@@ -50,6 +54,8 @@ Main.propTypes = {
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isDeleted: PropTypes.bool,
+  isSuccessful: PropTypes.bool,
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
@@ -66,6 +72,6 @@ Main.propTypes = {
   }).isRequired,
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string,
-  setMovie: PropTypes.func.isRequired,
-  isSuccessful: PropTypes.bool
+  setIsDeleted: PropTypes.func,
+  setMovie: PropTypes.func.isRequired
 };

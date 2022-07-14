@@ -6,7 +6,15 @@ import PropTypes from 'prop-types';
 import './CardMovie.scss';
 import MenuCard from '../Content/MenuCard/MenuCard';
 
-export const MovieCard = ({ id, genres, title, poster_path, release_date, handleOpen }) => {
+export const MovieCard = ({
+  id,
+  genres,
+  title,
+  poster_path,
+  release_date,
+  handleOpen,
+  setIsDeleted
+}) => {
   const [showMenu, setShowMenu] = useState(false)
 
   return (
@@ -32,7 +40,14 @@ export const MovieCard = ({ id, genres, title, poster_path, release_date, handle
         )
       }
       {
-        showMenu && <MenuCard id={id} handleOpen={handleOpen} setShowMenu={setShowMenu} />
+        showMenu && (
+          <MenuCard
+            id={id}
+            handleOpen={handleOpen}
+            setShowMenu={setShowMenu}
+            setIsDeleted={setIsDeleted}
+          />
+        )
       }
       <CardActionArea>
         <CardMedia
@@ -102,5 +117,6 @@ MovieCard.propTypes = {
   revenue: PropTypes.number,
   genres: PropTypes.array.isRequired,
   runtime: PropTypes.number,
-  handleOpen: PropTypes.func.isRequired
+  handleOpen: PropTypes.func.isRequired,
+  setIsDeleted: PropTypes.func
 };

@@ -15,11 +15,13 @@ export const Content = ({
   handleReleaseDate,
   handleReset,
   handleSubmit,
+  isDeleted,
+  isSuccessful,
   movie,
   open,
   releaseDate,
+  setIsDeleted,
   setMovie,
-  isSuccessful,
   tabValue
 }) => {
   const [movies, setMovies] = useState([]);
@@ -89,7 +91,12 @@ export const Content = ({
           padding: '24px 60px'
         }}
       >
-        <Categories handleOpen={handleOpen} tabValue={tabValue} movies={movies} />
+        <Categories
+          handleOpen={handleOpen}
+          setIsDeleted={setIsDeleted}
+          tabValue={tabValue}
+          movies={movies}
+        />
       </TabPanel>
       <MovieForm
         handleClose={handleClose}
@@ -101,7 +108,7 @@ export const Content = ({
         open={open}
         releaseDate={releaseDate}
       />
-      <DialogMessage handleClose={handleClose} open={isSuccessful} />
+      <DialogMessage handleClose={handleClose} open={isSuccessful || isDeleted} isSuccessful={isSuccessful} />
     </TabContext>
   )
 }
@@ -130,5 +137,6 @@ Content.propTypes = {
   releaseDate: PropTypes.string,
   setMovie: PropTypes.func.isRequired,
   isSuccessful: PropTypes.bool,
+  setIsDeleted: PropTypes.func,
   tabValue: PropTypes.string.isRequired
 }

@@ -1,9 +1,11 @@
 import React from 'react';
-import { Dialog, DialogContent, Typography } from '@mui/material';
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import { Dialog, DialogContent } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const DialogMessage = ({ handleClose, open }) => {
+import SuccessfulMsg from './SuccessfulMsg';
+import ConfirmMsg from './ConfirmMsg';
+
+const DialogMessage = ({ handleClose, isSuccessful, open }) => {
   return (
     <Dialog
       onClose={handleClose}
@@ -17,36 +19,16 @@ const DialogMessage = ({ handleClose, open }) => {
     >
       <DialogContent
         sx={{
-          alignItems: 'center',
+          alignItems: isSuccessful ? 'center' : 'start',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: isSuccessful ? 'center' : 'start',
+          paddingX: '50px',
           width: '686px',
         }}
       >
-        <CheckCircleRoundedIcon sx={{ height: '80px', width: '80px'}} />
-        <Typography
-          sx={{
-            color: 'white',
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '40px',
-            textTransform: 'uppercase'
-          }}
-        >
-          congratulations !
-        </Typography>
-        <Typography
-          sx={{
-            color: 'white',
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '20px',
-            textAlign: 'center',
-            width: '350px'
-          }}
-        >
-          The movie has been added to 
-          database successfully 
-        </Typography>
+        {isSuccessful && <SuccessfulMsg />}
+        {!isSuccessful && <ConfirmMsg handleClose={handleClose} />}
       </DialogContent>
     </Dialog>
   )
@@ -54,6 +36,7 @@ const DialogMessage = ({ handleClose, open }) => {
 
 DialogMessage.propTypes = {
   handleClose: PropTypes.func.isRequired,
+  isSuccessful: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired
 }
 
