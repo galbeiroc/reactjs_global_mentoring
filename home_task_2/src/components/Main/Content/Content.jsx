@@ -7,6 +7,7 @@ import { Categories } from './Categories/Categories';
 import { MovieForm } from '../../MovieForm/MovieForm';
 
 import { data } from '../../../data/data';
+import DialogMessage from '../../DialogMessage/DialogMessage';
 
 export const Content = ({
   handleClose,
@@ -18,6 +19,7 @@ export const Content = ({
   open,
   releaseDate,
   setMovie,
+  isSuccessful,
   tabValue
 }) => {
   const [movies, setMovies] = useState([]);
@@ -99,6 +101,7 @@ export const Content = ({
         open={open}
         releaseDate={releaseDate}
       />
+      <DialogMessage handleClose={handleClose} open={isSuccessful} />
     </TabContext>
   )
 }
@@ -126,5 +129,6 @@ Content.propTypes = {
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string,
   setMovie: PropTypes.func.isRequired,
+  isSuccessful: PropTypes.bool,
   tabValue: PropTypes.string.isRequired
 }

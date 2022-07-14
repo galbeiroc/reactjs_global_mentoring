@@ -50,6 +50,7 @@ export const MovieForm = ({
   releaseDate
 }) => {
   const { genres, overview, poster_path, revenue, title, vote_count } = movie;
+
   return (
     <Dialog
       onClose={handleClose}
@@ -60,7 +61,7 @@ export const MovieForm = ({
         }
       }}
     >
-      <Box sx={{  }}>
+      <Box>
         <DialogTitle color='white' variant='h5'>
           ADD MOVIE
         </DialogTitle>

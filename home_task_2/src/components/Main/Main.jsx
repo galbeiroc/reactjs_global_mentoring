@@ -15,7 +15,8 @@ export const Main = ({
   movie,
   open,
   releaseDate,
-  setMovie
+  setMovie,
+  isSuccessful
 }) => {
   const [tabValue, setTabValue] = useState('1');
 
@@ -36,6 +37,7 @@ export const Main = ({
         open={open}
         releaseDate={releaseDate}
         setMovie={setMovie}
+        isSuccessful={isSuccessful}
         tabValue={tabValue}
       />
     </main>
@@ -65,4 +67,5 @@ Main.propTypes = {
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string,
   setMovie: PropTypes.func.isRequired,
+  isSuccessful: PropTypes.bool
 };
