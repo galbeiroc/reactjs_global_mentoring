@@ -44,6 +44,7 @@ export const MovieForm = ({
   handleClose,
   handleChange,
   handleReleaseDate,
+  handleSubmit,
   movie,
   open,
   releaseDate
@@ -71,6 +72,9 @@ export const MovieForm = ({
                 fontFamily: "'Montserrat', sans-serif",
                 borderRadius: '5px',
                 width: '525px',
+                '& .MuiFormLabel-root': {
+                  color: '#F65242',
+                },
                 '& label.Mui-focused': {
                   color: '#F65242',
                 },
@@ -106,6 +110,9 @@ export const MovieForm = ({
                       fontFamily: "'Montserrat', sans-serif",
                       marginLeft: '20px',
                       width: '305px',
+                      '& .MuiFormLabel-root': {
+                        color: '#F65242',
+                      },
                       '& label.Mui-focused': {
                         color: '#F65242',
                       },
@@ -131,6 +138,9 @@ export const MovieForm = ({
                 borderRadius: '5px',
                 fontFamily: "'Montserrat', sans-serif",
                 width: '525px',
+                '& .MuiFormLabel-root': {
+                  color: '#F65242',
+                },
                 '& label.Mui-focused': {
                   color: '#F65242',
                 },
@@ -158,6 +168,9 @@ export const MovieForm = ({
                 fontFamily: "'Montserrat', sans-serif",
                 marginLeft: '20px',
                 width: '305px',
+                '& .MuiFormLabel-root': {
+                  color: '#F65242',
+                },
                 '& label.Mui-focused': {
                   color: '#F65242',
                 },
@@ -188,29 +201,21 @@ export const MovieForm = ({
                 name='genres'
                 onChange={handleChange}
                 input={
-                  <OutlinedInput
-                    label="GENRES"
-                    sx={{
-                      width: '525px',
-                      '& .MuiSelect-multiple': {
-                        '& label.Mui-focused': {
-                          color: '#F65242',
-                        },
-                        color: 'white',
-                        '& fieldset': {
-                          borderColor: '#232323',
-                        },
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#F65242',
-                        },
-                      },
-                      '& .MuiSelect-select': {
-                        background: '#2f2f2f',
-                      }
-                    }}
-                  />
+                  <OutlinedInput label="GENRES" />
                 }
                 renderValue={(selected) => selected.join(', ')}
+                sx={{
+                  width: '525px',
+                  '& .MuiFormLabel-root': {
+                    color: '#F65242',
+                  },
+                  '& .MuiSelect-multiple': {
+                    color: 'white',
+                  },
+                  '& .MuiSelect-select': {
+                    background: '#2f2f2f',
+                  }
+                }}
                 value={genres}
                 MenuProps={MenuProps}
               >
@@ -239,6 +244,9 @@ export const MovieForm = ({
                 fontFamily: "'Montserrat', sans-serif",
                 marginLeft: '20px',
                 width: '305px',
+                '& .MuiFormLabel-root': {
+                  color: '#F65242',
+                },
                 '& label.Mui-focused': {
                   color: '#F65242',
                 },
@@ -272,6 +280,9 @@ export const MovieForm = ({
               sx={{
                 width: '100%',
                 backgroundColor: '#2f2f2f',
+                '& .MuiFormLabel-root': {
+                  color: '#F65242',
+                },
                 '& label.Mui-focused': {
                   color: '#F65242',
                 },
@@ -307,7 +318,7 @@ export const MovieForm = ({
           </Button>
           <Button
             autoFocus
-            onClick={handleClose}
+            onClick={handleSubmit}
             variant='contained'
             sx={{
               backgroundColor: '#F65242',
@@ -328,6 +339,7 @@ MovieForm.propTypes = {
   handleClose: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleReleaseDate: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   movie: PropTypes.object,
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string

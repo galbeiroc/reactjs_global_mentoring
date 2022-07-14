@@ -11,6 +11,7 @@ export const Main = ({
   handleOpen,
   handleReleaseDate,
   handleReset,
+  handleSubmit,
   movie,
   open,
   releaseDate,
@@ -30,6 +31,7 @@ export const Main = ({
         handleOpen={handleOpen}
         handleReleaseDate={handleReleaseDate}
         handleReset={handleReset}
+        handleSubmit={handleSubmit}
         movie={movie}
         open={open}
         releaseDate={releaseDate}
@@ -45,6 +47,7 @@ Main.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string.isRequired,

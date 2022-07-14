@@ -59,6 +59,11 @@ export default function App() {
     handleReset();
   };
 
+  const handleSubmit = () => {
+    handleReset();
+    handleClose();
+  }
+
   return (
     <>
       <Header handleOpen={handleOpen} />
@@ -67,6 +72,7 @@ export default function App() {
         handleOpen={handleOpen}
         handleReleaseDate={handleReleaseDate}
         handleReset={handleReset}
+        handleSubmit={handleSubmit}
         movie={movie}
         open={open}
         releaseDate={releaseDate}

@@ -13,6 +13,7 @@ export const Content = ({
   handleOpen,
   handleReleaseDate,
   handleReset,
+  handleSubmit,
   movie,
   open,
   releaseDate,
@@ -93,6 +94,7 @@ export const Content = ({
         handleChange={handleChange}
         handleReleaseDate={handleReleaseDate}
         handleReset={handleReset}
+        handleSubmit={handleSubmit}
         movie={movie}
         open={open}
         releaseDate={releaseDate}
@@ -106,6 +108,7 @@ Content.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
