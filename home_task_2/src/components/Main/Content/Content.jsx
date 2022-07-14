@@ -8,7 +8,7 @@ import { MovieForm } from '../../MovieForm/MovieForm';
 
 import { data } from '../../../data/data';
 
-export const Content = ({ handleClose, open, tabValue }) => {
+export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) => {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState({
     genres: [],
@@ -85,7 +85,7 @@ export const Content = ({ handleClose, open, tabValue }) => {
           padding: '24px 60px'
         }}
       >
-        <Categories tabValue={tabValue} movies={movies} />
+        <Categories handleOpen={handleOpen} tabValue={tabValue} movies={movies} />
       </TabPanel>
       <MovieForm
         handleClose={handleClose}
@@ -101,6 +101,7 @@ export const Content = ({ handleClose, open, tabValue }) => {
 
 Content.propTypes = {
   handleClose: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   tabValue: PropTypes.string.isRequired
 }

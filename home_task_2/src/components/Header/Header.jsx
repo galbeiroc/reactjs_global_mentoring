@@ -23,7 +23,7 @@ export const Header = ({ handleOpen }) => {
               fontSize: '16px',
               width: '177px'
             }}
-            onClick={handleOpen}
+            onClick={() => handleOpen(null)}
           >
             <AddIcon />ADD MORE
           </Button>

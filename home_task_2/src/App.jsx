@@ -6,9 +6,11 @@ import { Main } from './components/Main/Main';
 
 export default function App() {
   const [open, setOpen] = useState(false);
+  const [movieId, setMovieId] = useState(null);
   
-  const handleOpen = () => {
+  const handleOpen = (id) => {
     setOpen(true);
+    setMovieId(id);
   };
 
   const handleClose = () => {
@@ -18,7 +20,12 @@ export default function App() {
   return (
     <>
       <Header handleOpen={handleOpen} />
-      <Main handleClose={handleClose} open={open} />
+      <Main
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+        movieId={movieId}
+        open={open}
+      />
       <Footer />
     </>
   )

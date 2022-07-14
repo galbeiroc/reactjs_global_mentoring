@@ -1,12 +1,39 @@
-import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+import React, { useState } from 'react';
+import { Card, CardActionArea, CardContent, CardMedia, Icon, IconButton, Typography } from "@mui/material";
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PropTypes from 'prop-types';
 
 import './CardMovie.scss';
+import MenuCard from '../Content/MenuCard/MenuCard';
 
-export const MovieCard = ({ genres, title, poster_path, release_date }) => {
+export const MovieCard = ({ id, genres, title, poster_path, release_date, handleOpen }) => {
+  const [showMenu, setShowMenu] = useState(false)
+
   return (
-    <Card sx={{backgroundColor: '#232323',  maxWidth: 320 }}>
+    <Card  sx={{ backgroundColor: '#232323',  maxWidth: 320, position: 'relative' }}>
+      {
+        !showMenu && (
+          <IconButton
+            sx={{
+              backgroundColor: '#232323',
+              borderRadius: 7,
+              cursor: 'pointer',
+              height: '30px',
+              position: 'absolute',
+              right: '8px',
+              top: '5px',
+              width: '30px',
+              zIndex: 5
+            }}
+            onClick={() => setShowMenu(true)}
+          >
+            <MoreVertOutlinedIcon />
+          </IconButton>
+        )
+      }
+      {
+        showMenu && <MenuCard id={id} handleOpen={handleOpen} setShowMenu={setShowMenu} />
+      }
       <CardActionArea>
         <CardMedia
           component="img"
@@ -74,5 +101,6 @@ MovieCard.propTypes = {
   budget: PropTypes.number,
   revenue: PropTypes.number,
   genres: PropTypes.array.isRequired,
-  runtime: PropTypes.number
+  runtime: PropTypes.number,
+  handleOpen: PropTypes.func.isRequired
 };

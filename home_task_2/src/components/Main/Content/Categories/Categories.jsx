@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { MovieCard } from '../../MovieCard/MovieCard';
 
-export const Categories = ({ movies }) => (
+export const Categories = ({ movies, handleOpen }) => (
   <>
     {
       movies.map((movie) => (
-        <MovieCard key={movie.id} {...movie} />
+        <MovieCard key={movie.id} {...movie} handleOpen={handleOpen} />
       ))
     }
   </>
@@ -29,5 +29,6 @@ Categories.propTypes = {
       genres: PropTypes.array.isRequired,
       runtime: PropTypes.number
     })
-  ).isRequired
+  ).isRequired,
+  handleOpen: PropTypes.func.isRequired
 };

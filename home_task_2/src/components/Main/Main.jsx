@@ -6,7 +6,7 @@ import { Content } from './Content/Content';
 
 import './Main.scss';
 
-export const Main = ({ handleClose, open }) => {
+export const Main = ({ handleClose, handleOpen, open }) => {
   const [tabValue, setTabValue] = useState('1');
 
   const handleTabs = useCallback((event, newTabValue) => {
@@ -16,12 +16,13 @@ export const Main = ({ handleClose, open }) => {
   return (
     <main>
       <Nav tabValue={tabValue} handleTabs={handleTabs} />
-      <Content handleClose={handleClose} open={open} tabValue={tabValue} />
+      <Content handleClose={handleClose} handleOpen={handleOpen} open={open} tabValue={tabValue} />
     </main>
   )
 }
 
 Main.propTypes = {
   handleClose: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired
 };
