@@ -7,6 +7,7 @@ import { Categories } from './Categories/Categories';
 import { MovieForm } from '../../MovieForm/MovieForm';
 
 import { data } from '../../../data/data';
+import { setMovieStateForm } from '../../../utils/setMovieStateForm';
 
 export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) => {
   const [movies, setMovies] = useState([]);
@@ -14,8 +15,8 @@ export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) =>
     genres: [],
     overview: '',
     poster_path: '',
-    revenue: null,
-    vote_count: null,
+    revenue: '',
+    vote_count: '',
     title: '',
   });
   const [releaseDate, setReleaseDate] = useState(null);
@@ -43,6 +44,22 @@ export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) =>
   useEffect(() => {
     showMoviesCategories(tabValue)
   }, [tabValue, showMoviesCategories]);
+
+  useEffect(() => {
+    if (movieId) {
+      const {
+        genres,
+        overview,
+        poster_path,
+        revenue,
+        release_date,
+        vote_count,
+        title
+      } = setMovieStateForm(movieId, data)
+      setMovie({ ...movie, genres, overview,poster_path, revenue, vote_count, title })
+      setReleaseDate(release_date)
+    }
+  }, [movieId, setMovie]);
 
   const hadleChange = useCallback((event) => {
     const {
@@ -102,6 +119,7 @@ export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) =>
 Content.propTypes = {
   handleClose: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
+  movieId: PropTypes.number,
   open: PropTypes.bool.isRequired,
   tabValue: PropTypes.string.isRequired
 }

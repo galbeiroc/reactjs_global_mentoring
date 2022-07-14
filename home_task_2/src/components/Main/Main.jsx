@@ -6,7 +6,7 @@ import { Content } from './Content/Content';
 
 import './Main.scss';
 
-export const Main = ({ handleClose, handleOpen, open }) => {
+export const Main = ({ handleClose, handleOpen, movieId, open }) => {
   const [tabValue, setTabValue] = useState('1');
 
   const handleTabs = useCallback((event, newTabValue) => {
@@ -16,7 +16,13 @@ export const Main = ({ handleClose, handleOpen, open }) => {
   return (
     <main>
       <Nav tabValue={tabValue} handleTabs={handleTabs} />
-      <Content handleClose={handleClose} handleOpen={handleOpen} open={open} tabValue={tabValue} />
+      <Content
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+        movieId={movieId}
+        open={open}
+        tabValue={tabValue}
+      />
     </main>
   )
 }
@@ -24,5 +30,6 @@ export const Main = ({ handleClose, handleOpen, open }) => {
 Main.propTypes = {
   handleClose: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
+  movieId: PropTypes.number,
   open: PropTypes.bool.isRequired
 };
