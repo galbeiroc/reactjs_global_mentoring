@@ -7,19 +7,19 @@ import { Categories } from './Categories/Categories';
 import { MovieForm } from '../../MovieForm/MovieForm';
 
 import { data } from '../../../data/data';
-import { setMovieStateForm } from '../../../utils/setMovieStateForm';
 
-export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) => {
+export const Content = ({
+  handleClose,
+  handleOpen,
+  handleReleaseDate,
+  handleReset,
+  movie,
+  open,
+  releaseDate,
+  setMovie,
+  tabValue
+}) => {
   const [movies, setMovies] = useState([]);
-  const [movie, setMovie] = useState({
-    genres: [],
-    overview: '',
-    poster_path: '',
-    revenue: '',
-    vote_count: '',
-    title: '',
-  });
-  const [releaseDate, setReleaseDate] = useState(null);
 
   const showMoviesCategories = useCallback((tabVal) => {
     switch (tabVal) {
@@ -39,29 +39,13 @@ export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) =>
         setMovies(Object.values(data).map((movie) => movie))
         break;
     }
-  }, [setMovies])
+  }, [setMovies]);
 
   useEffect(() => {
     showMoviesCategories(tabValue)
   }, [tabValue, showMoviesCategories]);
 
-  useEffect(() => {
-    if (movieId) {
-      const {
-        genres,
-        overview,
-        poster_path,
-        revenue,
-        release_date,
-        vote_count,
-        title
-      } = setMovieStateForm(movieId, data)
-      setMovie({ ...movie, genres, overview,poster_path, revenue, vote_count, title })
-      setReleaseDate(release_date)
-    }
-  }, [movieId, setMovie]);
-
-  const hadleChange = useCallback((event) => {
+  const handleChange = useCallback((event) => {
     const {
       target: { value, name },
     } = event;
@@ -106,11 +90,12 @@ export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) =>
       </TabPanel>
       <MovieForm
         handleClose={handleClose}
-        handleChange={hadleChange}
+        handleChange={handleChange}
+        handleReleaseDate={handleReleaseDate}
+        handleReset={handleReset}
         movie={movie}
         open={open}
         releaseDate={releaseDate}
-        setReleaseDate={setReleaseDate}
       />
     </TabContext>
   )
@@ -119,7 +104,24 @@ export const Content = ({ handleClose, handleOpen, movieId, open, tabValue }) =>
 Content.propTypes = {
   handleClose: PropTypes.func.isRequired,
   handleOpen: PropTypes.func.isRequired,
-  movieId: PropTypes.number,
+  handleReleaseDate: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    tagline: PropTypes.string,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number,
+    poster_path: PropTypes.string.isRequired,
+    overview: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    genres: PropTypes.array.isRequired,
+    runtime: PropTypes.number
+  }).isRequired,
   open: PropTypes.bool.isRequired,
+  releaseDate: PropTypes.string,
+  setMovie: PropTypes.func.isRequired,
   tabValue: PropTypes.string.isRequired
 }

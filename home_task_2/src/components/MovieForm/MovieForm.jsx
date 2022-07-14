@@ -43,13 +43,12 @@ const MenuProps = {
 export const MovieForm = ({
   handleClose,
   handleChange,
+  handleReleaseDate,
   movie,
   open,
-  releaseDate,
-  setReleaseDate
+  releaseDate
 }) => {
   const { genres, overview, poster_path, revenue, title, vote_count } = movie;
-
   return (
     <Dialog
       onClose={handleClose}
@@ -94,9 +93,7 @@ export const MovieForm = ({
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 value={releaseDate}
-                onChange={(newValue) => {
-                  setReleaseDate(newValue);
-                }}
+                onChange={handleReleaseDate}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -330,6 +327,8 @@ export const MovieForm = ({
 MovieForm.propTypes = {
   handleClose: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleReleaseDate: PropTypes.func.isRequired,
   movie: PropTypes.object,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
+  releaseDate: PropTypes.string
 };
