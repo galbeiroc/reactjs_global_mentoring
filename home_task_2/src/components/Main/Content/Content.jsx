@@ -10,18 +10,21 @@ import DialogMessage from '../../DialogMessage/DialogMessage';
 
 export const Content = ({
   handleClose,
+  handleDelete,
   handleOpen,
   handleReleaseDate,
   handleReset,
   handleSubmit,
   isDeleted,
   isSuccessful,
-  movies,
   movie,
+  movieId,
+  movies,
   open,
   releaseDate,
   setIsDeleted,
   setMovie,
+  setMovieId,
   tabValue
 }) => {
   const handleChange = useCallback((event) => {
@@ -67,9 +70,10 @@ export const Content = ({
       >
         <Categories
           handleOpen={handleOpen}
-          setIsDeleted={setIsDeleted}
-          tabValue={tabValue}
           movies={movies}
+          setIsDeleted={setIsDeleted}
+          setMovieId={setMovieId}
+          tabValue={tabValue}
         />
       </TabPanel>
       <MovieForm
@@ -82,13 +86,21 @@ export const Content = ({
         open={open}
         releaseDate={releaseDate}
       />
-      <DialogMessage handleClose={handleClose} open={isSuccessful || isDeleted} isSuccessful={isSuccessful} />
+      <DialogMessage
+        handleClose={handleClose}
+        handleDelete={handleDelete}
+        isDeleted={isDeleted}
+        isSuccessful={isSuccessful}
+        movieId={movieId}
+        open={isSuccessful || isDeleted}
+      />
     </TabContext>
   )
 }
 
 Content.propTypes = {
   handleClose: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func,
   handleOpen: PropTypes.func.isRequired,
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
@@ -107,6 +119,7 @@ Content.propTypes = {
     genres: PropTypes.array.isRequired,
     runtime: PropTypes.number
   }).isRequired,
+  movieId: PropTypes.number,
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -128,5 +141,6 @@ Content.propTypes = {
   setMovie: PropTypes.func.isRequired,
   isSuccessful: PropTypes.bool,
   setIsDeleted: PropTypes.func,
+  setMovieId: PropTypes.func,
   tabValue: PropTypes.string.isRequired
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Nav } from './Nav/Nav';
@@ -8,6 +8,7 @@ import './Main.scss';
 
 export const Main = ({
   handleClose,
+  handleDelete,
   handleOpen,
   handleReleaseDate,
   handleReset,
@@ -15,12 +16,14 @@ export const Main = ({
   handleTabs,
   isDeleted,
   isSuccessful,
-  movies,
   movie,
+  movieId,
+  movies,
   open,
   releaseDate,
   setIsDeleted,
   setMovie,
+  setMovieId,
   tabValue
 }) => {
   return (
@@ -28,18 +31,21 @@ export const Main = ({
       <Nav tabValue={tabValue} handleTabs={handleTabs} />
       <Content
         handleClose={handleClose}
+        handleDelete={handleDelete}
         handleOpen={handleOpen}
         handleReleaseDate={handleReleaseDate}
         handleReset={handleReset}
         handleSubmit={handleSubmit}
         isDeleted={isDeleted}
         isSuccessful={isSuccessful}
-        movies={movies}
         movie={movie}
+        movieId={movieId}
+        movies={movies}
         open={open}
         releaseDate={releaseDate}
         setIsDeleted={setIsDeleted}
         setMovie={setMovie}
+        setMovieId={setMovieId}
         tabValue={tabValue}
       />
     </main>
@@ -48,6 +54,7 @@ export const Main = ({
 
 Main.propTypes = {
   handleClose: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func,
   handleOpen: PropTypes.func.isRequired,
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
@@ -55,6 +62,21 @@ Main.propTypes = {
   handleTabs: PropTypes.func.isRequired,
   isDeleted: PropTypes.bool,
   isSuccessful: PropTypes.bool,
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    tagline: PropTypes.string,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number,
+    poster_path: PropTypes.string.isRequired,
+    overview: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    genres: PropTypes.array.isRequired,
+    runtime: PropTypes.number
+  }).isRequired,
+  movieId: PropTypes.number,
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -71,23 +93,10 @@ Main.propTypes = {
       runtime: PropTypes.number
     })
   ).isRequired,
-  movie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    release_date: PropTypes.string,
-    tagline: PropTypes.string,
-    vote_average: PropTypes.number,
-    vote_count: PropTypes.number,
-    poster_path: PropTypes.string.isRequired,
-    overview: PropTypes.string,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
-    genres: PropTypes.array.isRequired,
-    runtime: PropTypes.number
-  }).isRequired,
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string,
   setIsDeleted: PropTypes.func,
   setMovie: PropTypes.func.isRequired,
+  setMovieId: PropTypes.func,
   tabValue: PropTypes.string.isRequired
 };

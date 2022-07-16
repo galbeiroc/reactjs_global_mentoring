@@ -3,11 +3,17 @@ import PropTypes from 'prop-types';
 
 import { MovieCard } from '../../MovieCard/MovieCard';
 
-export const Categories = ({ movies, handleOpen, setIsDeleted }) => (
+export const Categories = ({ movies, handleOpen, setIsDeleted, setMovieId }) => (
   <>
     {
       movies.map((movie) => (
-        <MovieCard key={movie.id} {...movie} handleOpen={handleOpen} setIsDeleted={setIsDeleted} />
+        <MovieCard
+          key={movie.id}
+          {...movie}
+          handleOpen={handleOpen}
+          setIsDeleted={setIsDeleted}
+          setMovieId={setMovieId}
+        />
       ))
     }
   </>
@@ -31,5 +37,6 @@ Categories.propTypes = {
     })
   ).isRequired,
   handleOpen: PropTypes.func.isRequired,
-  setIsDeleted: PropTypes.func
+  setIsDeleted: PropTypes.func,
+  setMovieId: PropTypes.func
 };

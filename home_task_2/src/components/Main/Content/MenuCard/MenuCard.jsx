@@ -3,7 +3,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { Box, IconButton, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import PropTypes from 'prop-types';
 
-export const MenuCard = ({id, handleOpen, setShowMenu, setIsDeleted }) => {
+export const MenuCard = ({ id, handleOpen, setShowMenu, setMovieId, setIsDeleted }) => {
   return (
     <Box
       sx={{
@@ -22,7 +22,8 @@ export const MenuCard = ({id, handleOpen, setShowMenu, setIsDeleted }) => {
       <List>
         <ListItem disablePadding>
           <ListItemButton onClick={() => {
-            handleOpen(id);
+            handleOpen();
+            setMovieId(id);
             setShowMenu(false);
           }}>
             <ListItemText
@@ -37,6 +38,7 @@ export const MenuCard = ({id, handleOpen, setShowMenu, setIsDeleted }) => {
         <ListItem disablePadding>
           <ListItemButton onClick={() => {
             setIsDeleted(true);
+            setMovieId(id);
             setShowMenu(false);
           }}>
             <ListItemText
@@ -56,8 +58,9 @@ export const MenuCard = ({id, handleOpen, setShowMenu, setIsDeleted }) => {
 MenuCard.propTypes = {
   id: PropTypes.number,
   handleOpen: PropTypes.func.isRequired,
-  setShowMenu: PropTypes.func,
-  setIsDeleted: PropTypes.func
+  setIsDeleted: PropTypes.func,
+  setMovieId: PropTypes.func,
+  setShowMenu: PropTypes.func
 }
 
 export default MenuCard;

@@ -5,7 +5,14 @@ import PropTypes from 'prop-types';
 import SuccessfulMsg from './SuccessfulMsg';
 import ConfirmMsg from './ConfirmMsg';
 
-const DialogMessage = ({ handleClose, isSuccessful, open }) => {
+const DialogMessage = ({
+  handleClose,
+  handleDelete,
+  isDeleted,
+  isSuccessful,
+  movieId,
+  open
+}) => {
   return (
     <Dialog
       onClose={handleClose}
@@ -27,8 +34,8 @@ const DialogMessage = ({ handleClose, isSuccessful, open }) => {
           width: '686px',
         }}
       >
-        {isSuccessful && <SuccessfulMsg />}
-        {!isSuccessful && <ConfirmMsg handleClose={handleClose} />}
+        {isSuccessful && !isDeleted && <SuccessfulMsg />}
+        {!isSuccessful && isDeleted && <ConfirmMsg handleDelete={handleDelete} movieId={movieId} />}
       </DialogContent>
     </Dialog>
   )
@@ -36,7 +43,10 @@ const DialogMessage = ({ handleClose, isSuccessful, open }) => {
 
 DialogMessage.propTypes = {
   handleClose: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func,
+  isDeleted: PropTypes.bool.isRequired,
   isSuccessful: PropTypes.bool.isRequired,
+  movieId: PropTypes.number,
   open: PropTypes.bool.isRequired
 }
 

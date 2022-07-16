@@ -3,7 +3,7 @@ import { Button, Typography } from '@mui/material';
 
 import PropTypes from 'prop-types';
 
-const ConfirmMsg = ({ handleClose }) => {
+const ConfirmMsg = ({ handleDelete, movieId }) => {
   return (
     <>
       <Typography
@@ -29,7 +29,7 @@ const ConfirmMsg = ({ handleClose }) => {
         </Typography>
         <Button
           autoFocus
-          onClick={handleClose}
+          onClick={() => handleDelete(movieId)}
           variant='contained'
           sx={{
             alignSelf: 'end',
@@ -47,7 +47,8 @@ const ConfirmMsg = ({ handleClose }) => {
 }
 
 ConfirmMsg.propTypes = {
-  handleClose: PropTypes.func.isRequired
+  handleDelete: PropTypes.func,
+  movieId: PropTypes.number
 }
 
 export default ConfirmMsg;

@@ -13,7 +13,8 @@ export const MovieCard = ({
   poster_path,
   release_date,
   handleOpen,
-  setIsDeleted
+  setIsDeleted,
+  setMovieId
 }) => {
   const [showMenu, setShowMenu] = useState(false)
 
@@ -44,8 +45,9 @@ export const MovieCard = ({
           <MenuCard
             id={id}
             handleOpen={handleOpen}
-            setShowMenu={setShowMenu}
             setIsDeleted={setIsDeleted}
+            setMovieId={setMovieId}
+            setShowMenu={setShowMenu}
           />
         )
       }
@@ -118,5 +120,6 @@ MovieCard.propTypes = {
   genres: PropTypes.array.isRequired,
   runtime: PropTypes.number,
   handleOpen: PropTypes.func.isRequired,
-  setIsDeleted: PropTypes.func
+  setIsDeleted: PropTypes.func,
+  setMovieId: PropTypes.func
 };

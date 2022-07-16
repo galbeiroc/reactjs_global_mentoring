@@ -30,7 +30,7 @@ export default function App() {
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(showMoviesCategories(tabValue, data));
 
   const handleTabs = useCallback((event, newTabValue) => {
     setTabValue(newTabValue);
@@ -54,10 +54,6 @@ export default function App() {
     }
   }, [movieId, setMovie, isEdit]);
 
-  useEffect(() => {
-    setMovies(showMoviesCategories(tabValue, data));
-  }, []);
-
   const handleReset = () => {
     setMovie(initialStateMovie)
     setReleaseDate(null)
@@ -69,9 +65,8 @@ export default function App() {
     }
   }
   
-  const handleOpen = useCallback((id) => {
+  const handleOpen = useCallback(() => {
     setOpen(true);
-    setMovieId(id);
     if (!id) {
       setIsEdit(false);
     } else {
@@ -84,7 +79,16 @@ export default function App() {
     setIsDeleted(false);
     setIsSuccessful(false);
     handleReset();
-  },[]);
+  }, []);
+
+  console.log('movies 00', movies);
+  const handleDelete = useCallback((id) => {
+    console.log('movies', movies);
+    const deletedMovie = movies.filter((m) => m.id !== id);
+    console.log(deletedMovie);
+    // setMovies(deletedMovie);
+    handleClose();
+  }, [])
 
   const handleSubmit = (movie) => {
     if (isEdit) {
@@ -101,6 +105,7 @@ export default function App() {
 
   const mainProps = {
     handleClose,
+    handleDelete,
     handleOpen,
     handleReleaseDate,
     handleReset,
@@ -109,11 +114,13 @@ export default function App() {
     isDeleted,
     isSuccessful,
     movie,
+    movieId,
     movies,
     open,
     releaseDate,
     setIsDeleted,
     setMovie,
+    setMovieId,
     tabValue,
   }
 
