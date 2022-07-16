@@ -97,7 +97,8 @@ export const MovieForm = ({
             />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
-                value={new Date(releaseDate)}
+                disableFuture
+                value={releaseDate}
                 onChange={handleReleaseDate}
                 renderInput={(params) => (
                   <TextField

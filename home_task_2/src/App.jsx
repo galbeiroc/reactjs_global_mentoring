@@ -6,6 +6,7 @@ import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 
 import { data } from './data/data';
+import { addMovie } from './utils/addMovie';
 import { editMovie } from './utils/editMovie';
 import { setMovieStateForm } from './utils/setMovieStateForm';
 import { showMoviesCategories } from './utils/showMoviesCategories';
@@ -89,10 +90,13 @@ export default function App() {
     if (isEdit) {
       setMovies(editMovie(movie, movies));
       setIsEdit(false);
+    } else {
+      const id = Math.floor(Math.random() * 10000)
+      setMovies(addMovie({...movie, id }, movies));
     }
     handleReset();
     handleClose();
-    setIsSuccessful(true)
+    setIsSuccessful(true);
   }
 
   const mainProps = {
