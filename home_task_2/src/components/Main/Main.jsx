@@ -12,20 +12,17 @@ export const Main = ({
   handleReleaseDate,
   handleReset,
   handleSubmit,
+  handleTabs,
   isDeleted,
   isSuccessful,
+  movies,
   movie,
   open,
   releaseDate,
   setIsDeleted,
-  setMovie
+  setMovie,
+  tabValue
 }) => {
-  const [tabValue, setTabValue] = useState('1');
-
-  const handleTabs = useCallback((event, newTabValue) => {
-    setTabValue(newTabValue);
-  }, []);
-
   return (
     <main>
       <Nav tabValue={tabValue} handleTabs={handleTabs} />
@@ -37,6 +34,7 @@ export const Main = ({
         handleSubmit={handleSubmit}
         isDeleted={isDeleted}
         isSuccessful={isSuccessful}
+        movies={movies}
         movie={movie}
         open={open}
         releaseDate={releaseDate}
@@ -54,8 +52,25 @@ Main.propTypes = {
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleTabs: PropTypes.func.isRequired,
   isDeleted: PropTypes.bool,
   isSuccessful: PropTypes.bool,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string.isRequired,
+      release_date: PropTypes.string,
+      tagline: PropTypes.string,
+      vote_average: PropTypes.number,
+      vote_count: PropTypes.number,
+      poster_path: PropTypes.string.isRequired,
+      overview: PropTypes.string,
+      budget: PropTypes.number,
+      revenue: PropTypes.number,
+      genres: PropTypes.array.isRequired,
+      runtime: PropTypes.number
+    })
+  ).isRequired,
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
@@ -73,5 +88,6 @@ Main.propTypes = {
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string,
   setIsDeleted: PropTypes.func,
-  setMovie: PropTypes.func.isRequired
+  setMovie: PropTypes.func.isRequired,
+  tabValue: PropTypes.string.isRequired
 };

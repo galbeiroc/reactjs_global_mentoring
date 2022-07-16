@@ -97,7 +97,7 @@ export const MovieForm = ({
             />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
-                value={releaseDate}
+                value={new Date(releaseDate)}
                 onChange={handleReleaseDate}
                 renderInput={(params) => (
                   <TextField
@@ -189,7 +189,7 @@ export const MovieForm = ({
               name='vote_count'
               onChange={handleChange}
               type='number'
-              value={vote_count}
+              value={Number(vote_count)}
               variant="outlined"
             />
           </Box>
@@ -266,7 +266,7 @@ export const MovieForm = ({
               onChange={handleChange}
               placeholder='minutes'
               type='number'
-              value={revenue}
+              value={Number(revenue)}
               variant="outlined"
             />
           </Box>
@@ -319,7 +319,7 @@ export const MovieForm = ({
           </Button>
           <Button
             autoFocus
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(movie)}
             variant='contained'
             sx={{
               backgroundColor: '#F65242',

@@ -35,7 +35,10 @@ export const MenuCard = ({id, handleOpen, setShowMenu, setIsDeleted }) => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => setIsDeleted(true)}>
+          <ListItemButton onClick={() => {
+            setIsDeleted(true);
+            setShowMenu(false);
+          }}>
             <ListItemText
               primary="Delete"
               sx={{

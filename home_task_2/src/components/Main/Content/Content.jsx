@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { TabContext, TabPanel } from '@mui/lab';
 import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { Categories } from './Categories/Categories';
 import { MovieForm } from '../../MovieForm/MovieForm';
 
-import { data } from '../../../data/data';
 import DialogMessage from '../../DialogMessage/DialogMessage';
 
 export const Content = ({
@@ -17,6 +16,7 @@ export const Content = ({
   handleSubmit,
   isDeleted,
   isSuccessful,
+  movies,
   movie,
   open,
   releaseDate,
@@ -24,32 +24,6 @@ export const Content = ({
   setMovie,
   tabValue
 }) => {
-  const [movies, setMovies] = useState([]);
-
-  const showMoviesCategories = useCallback((tabVal) => {
-    switch (tabVal) {
-      case '2':
-        setMovies(Object.values(data).filter((movie) => movie.genres.includes('Fantasy')))
-        break;
-      case '3':
-        setMovies(Object.values(data).filter((movie) => movie.genres.includes('Comedy')))
-        break;
-      case '4':
-        setMovies(Object.values(data).filter((movie) => movie.genres.includes('Horror')))
-        break;
-      case '5':
-        setMovies(Object.values(data).filter((movie) => movie.genres.includes('Action')))
-        break;
-      default:
-        setMovies(Object.values(data).map((movie) => movie))
-        break;
-    }
-  }, [setMovies]);
-
-  useEffect(() => {
-    showMoviesCategories(tabValue)
-  }, [tabValue, showMoviesCategories]);
-
   const handleChange = useCallback((event) => {
     const {
       target: { value, name },
@@ -133,6 +107,22 @@ Content.propTypes = {
     genres: PropTypes.array.isRequired,
     runtime: PropTypes.number
   }).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string.isRequired,
+      release_date: PropTypes.string,
+      tagline: PropTypes.string,
+      vote_average: PropTypes.number,
+      vote_count: PropTypes.number,
+      poster_path: PropTypes.string.isRequired,
+      overview: PropTypes.string,
+      budget: PropTypes.number,
+      revenue: PropTypes.number,
+      genres: PropTypes.array.isRequired,
+      runtime: PropTypes.number
+    })
+  ).isRequired,
   open: PropTypes.bool.isRequired,
   releaseDate: PropTypes.string,
   setMovie: PropTypes.func.isRequired,
