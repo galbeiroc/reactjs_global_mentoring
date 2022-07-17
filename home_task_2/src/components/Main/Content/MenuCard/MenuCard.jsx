@@ -22,7 +22,7 @@ export const MenuCard = ({ id, handleOpen, setShowMenu, setMovieId, setIsDeleted
       <List>
         <ListItem disablePadding>
           <ListItemButton onClick={() => {
-            handleOpen();
+            handleOpen(id);
             setMovieId(id);
             setShowMenu(false);
           }}>

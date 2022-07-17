@@ -1,4 +1,3 @@
-import id from 'date-fns/locale/id/index.js';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Footer } from './components/Footer/Footer';
@@ -10,6 +9,7 @@ import { addMovie } from './utils/addMovie';
 import { editMovie } from './utils/editMovie';
 import { setMovieStateForm } from './utils/setMovieStateForm';
 import { showMoviesCategories } from './utils/showMoviesCategories';
+import { sortMovies } from './utils/sortMovies';
 
 const initialStateMovie = {
   id: null,
@@ -26,6 +26,7 @@ export default function App() {
   const [movieId, setMovieId] = useState(null);
   const [tabValue, setTabValue] = useState('1');
   const [movie, setMovie] = useState(initialStateMovie);
+  const [sortBy, setSortBy] = useState('release_date');
   const [releaseDate, setReleaseDate] = useState(null);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
@@ -34,7 +35,7 @@ export default function App() {
 
   const handleTabs = useCallback((event, newTabValue) => {
     setTabValue(newTabValue);
-    setMovies(showMoviesCategories(newTabValue, data));
+    setMovies(showMoviesCategories(newTabValue, movies));
   }, []);
 
   useEffect(() => {
@@ -54,18 +55,26 @@ export default function App() {
     }
   }, [movieId, setMovie, isEdit]);
 
-  const handleReset = () => {
-    setMovie(initialStateMovie)
-    setReleaseDate(null)
+  useEffect(() => {
+    sortMovies(movies, sortBy)
+  }, [sortBy, movies]);
+
+  const handleSortMovie = ({ target: { value }}) => {
+    setSortBy(value)
   }
 
-  const handleReleaseDate = (newDate) => {
+  const handleReset = useCallback(() => {
+    setMovie(initialStateMovie)
+    setReleaseDate(null)
+  }, []);
+
+  const handleReleaseDate = useCallback((newDate) => {
     if (newDate) {
       setReleaseDate(newDate);
     }
-  }
+  }, []);
   
-  const handleOpen = useCallback(() => {
+  const handleOpen = useCallback((id) => {
     setOpen(true);
     if (!id) {
       setIsEdit(false);
@@ -74,23 +83,20 @@ export default function App() {
     }
   }, []);
 
-  const handleClose =  useCallback(() => {
+  const handleClose = useCallback(() => {
     setOpen(false);
     setIsDeleted(false);
     setIsSuccessful(false);
     handleReset();
   }, []);
 
-  console.log('movies 00', movies);
   const handleDelete = useCallback((id) => {
-    console.log('movies', movies);
     const deletedMovie = movies.filter((m) => m.id !== id);
-    console.log(deletedMovie);
-    // setMovies(deletedMovie);
+    setMovies(deletedMovie);
     handleClose();
-  }, [])
+  }, []);
 
-  const handleSubmit = (movie) => {
+  const handleSubmit = useCallback((movie) => {
     if (isEdit) {
       setMovies(editMovie(movie, movies));
       setIsEdit(false);
@@ -101,7 +107,7 @@ export default function App() {
     handleReset();
     handleClose();
     setIsSuccessful(true);
-  }
+  }, [isEdit]);
 
   const mainProps = {
     handleClose,
@@ -109,6 +115,7 @@ export default function App() {
     handleOpen,
     handleReleaseDate,
     handleReset,
+    handleSortMovie,
     handleSubmit,
     handleTabs,
     isDeleted,
@@ -118,11 +125,12 @@ export default function App() {
     movies,
     open,
     releaseDate,
+    sortBy,
     setIsDeleted,
     setMovie,
     setMovieId,
     tabValue,
-  }
+  };
 
   return (
     <>

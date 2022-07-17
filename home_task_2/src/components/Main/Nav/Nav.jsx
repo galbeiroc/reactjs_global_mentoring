@@ -16,7 +16,7 @@ const tabs = {
   5: "ACTION"
 }
 
-export const Nav = ({ tabValue, handleTabs }) => (
+export const Nav = ({ handleSortMovie, handleTabs, sortBy, tabValue }) => (
   <nav className='contentNav'>
     <TabContext value={tabValue}>
       <Box className='boxTabs'>
@@ -52,13 +52,15 @@ export const Nav = ({ tabValue, handleTabs }) => (
             ))
           }
         </Tabs>
-        <Sort />
+        <Sort handleSortMovie={handleSortMovie} sortBy={sortBy} />
       </Box>
     </TabContext>
   </nav>
 );
 
 Nav.propTypes = {
-  tabValue: PropTypes.string.isRequired,
-  handleTabs: PropTypes.func.isRequired
+  handleSortMovie: PropTypes.func.isRequired,
+  handleTabs: PropTypes.func.isRequired,
+  sortBy: PropTypes.string,
+  tabValue: PropTypes.string.isRequired
 }

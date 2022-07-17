@@ -12,6 +12,7 @@ export const Main = ({
   handleOpen,
   handleReleaseDate,
   handleReset,
+  handleSortMovie,
   handleSubmit,
   handleTabs,
   isDeleted,
@@ -24,11 +25,17 @@ export const Main = ({
   setIsDeleted,
   setMovie,
   setMovieId,
+  sortBy,
   tabValue
 }) => {
   return (
     <main>
-      <Nav tabValue={tabValue} handleTabs={handleTabs} />
+      <Nav
+        handleSortMovie={handleSortMovie}
+        handleTabs={handleTabs}
+        sortBy={sortBy}
+        tabValue={tabValue}
+      />
       <Content
         handleClose={handleClose}
         handleDelete={handleDelete}
@@ -58,6 +65,7 @@ Main.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleReleaseDate: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
+  handleSortMovie: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleTabs: PropTypes.func.isRequired,
   isDeleted: PropTypes.bool,
@@ -98,5 +106,6 @@ Main.propTypes = {
   setIsDeleted: PropTypes.func,
   setMovie: PropTypes.func.isRequired,
   setMovieId: PropTypes.func,
+  sortBy: PropTypes.string,
   tabValue: PropTypes.string.isRequired
 };

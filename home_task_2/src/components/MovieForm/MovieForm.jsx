@@ -190,7 +190,7 @@ export const MovieForm = ({
               name='vote_count'
               onChange={handleChange}
               type='number'
-              value={Number(vote_count)}
+              value={vote_count}
               variant="outlined"
             />
           </Box>
@@ -267,7 +267,7 @@ export const MovieForm = ({
               onChange={handleChange}
               placeholder='minutes'
               type='number'
-              value={Number(revenue)}
+              value={revenue}
               variant="outlined"
             />
           </Box>

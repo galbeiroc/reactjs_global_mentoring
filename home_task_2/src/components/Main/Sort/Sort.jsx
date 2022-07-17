@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Box, MenuItem, Select, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
 
 import './Sort.scss'
 
-export const Sort = () => {
-  const [sortBy, setSortBy] = useState(10);
-
-  const onChange = ({ target: { value }}) => {
-    setSortBy(value)
-  }
-
+export const Sort = ({ handleSortMovie, sortBy }) => {
   return (
     <Box className='sortContent'>
       <Typography
@@ -34,12 +29,17 @@ export const Sort = () => {
           textTransform: 'uppercase',
           width: 'fit-content'
         }}
-        onChange={onChange}
+        onChange={handleSortMovie}
       >
-        <MenuItem value={10}>release date</MenuItem>
-        <MenuItem value={20}>old date</MenuItem>
-        <MenuItem value={30}>sort by A-Z</MenuItem>
+        <MenuItem value='release_date'>release date</MenuItem>
+        <MenuItem value='old_date'>old date</MenuItem>
+        <MenuItem value='sort_az'>sort by A-Z</MenuItem>
       </Select>
     </Box>
   )
+}
+
+Sort.propTypes = {
+  handleSortMovie: PropTypes.func.isRequired,
+  sortBy: PropTypes.string
 }
