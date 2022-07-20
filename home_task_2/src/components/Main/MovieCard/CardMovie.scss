@@ -1,0 +1,18 @@
+@import "../../../styles/variables.scss";
+
+.contentMoreVert {
+  background-color: aqua;
+  cursor: pointer;
+  height: '280px';
+  display: inline;
+  position: 'absolute';
+  right: '10px'; 
+  width: '280px'; 
+  z-index: 5; 
+}
+
+.cardFooter {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
